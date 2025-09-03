@@ -9,23 +9,15 @@ const geistSans = localFont({
   display: "swap",
   fallback: [
     "Inter",
-    "-apple-system",
-    "BlinkMacSystemFont", 
+    "system-ui",
     "Segoe UI",
     "Roboto",
-    "Oxygen",
-    "Ubuntu",
-    "Cantarell",
-    "Fira Sans",
-    "Droid Sans",
-    "Helvetica Neue",
     "Arial",
-    "sans-serif",
+    "Helvetica",
     "Apple Color Emoji",
     "Segoe UI Emoji",
-    "Segoe UI Symbol"
+    "Noto Color Emoji"
   ],
-  preload: true,
 });
 
 const geistMono = localFont({
@@ -33,19 +25,7 @@ const geistMono = localFont({
   variable: "--font-geist-mono",
   weight: "100 900",
   display: "swap",
-  fallback: [
-    "ui-monospace", 
-    "SFMono-Regular", 
-    "SF Mono", 
-    "Monaco", 
-    "Inconsolata", 
-    "Fira Code", 
-    "Fira Mono", 
-    "Droid Sans Mono", 
-    "Consolas", 
-    "monospace"
-  ],
-  preload: true,
+  fallback: ["ui-monospace", "SFMono-Regular", "Menlo", "Consolas", "monospace"],
 });
 
 export const metadata: Metadata = {
@@ -61,31 +41,6 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <head>
-        {/* Preload critical fonts */}
-        <link
-          rel="preload"
-          href="/fonts/GeistVF.woff"
-          as="font"
-          type="font/woff"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="preload"
-          href="/fonts/GeistMonoVF.woff"
-          as="font"
-          type="font/woff"
-          crossOrigin="anonymous"
-        />
-        {/* Add font-display CSS for better fallback */}
-        <style jsx global>{`
-          @font-face {
-            font-family: 'Geist Sans Fallback';
-            src: local('Arial'), local('Helvetica'), local('sans-serif');
-            font-display: block;
-          }
-        `}</style>
-      </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         {children}
       </body>

@@ -1,7 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+* {
+  font-family: Arial, sans-serif !important;
+}
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -23,44 +25,22 @@ html {
   font-feature-settings: "kern";
 }
 
-* {
-  font-family: var(--font-geist-sans),
-               Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", 
-               Roboto, "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", 
-               "Droid Sans", "Helvetica Neue", Arial, Helvetica, sans-serif,
-               "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji";
-}
-
 body {
   color: var(--foreground);
   background: var(--background);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
+
+  font-family: var(--font-geist-sans),
+               Inter, system-ui, "Segoe UI", Roboto, Arial, Helvetica,
+               "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji";
 }
 
 code, pre, kbd, samp {
   font-family: var(--font-geist-mono),
-               ui-monospace, SFMono-Regular, "SF Mono", Monaco, 
-               Inconsolata, "Fira Code", "Fira Mono", 
-               "Droid Sans Mono", Consolas, "Liberation Mono", 
-               "Courier New", monospace !important;
+               ui-monospace, SFMono-Regular, Menlo, Consolas,
+               "Liberation Mono", monospace;
 }
-
-.font-loading * {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", 
-               Roboto, Arial, Helvetica, sans-serif !important;
-}
-
-/* Когда шрифты загружены */
-.font-loaded * {
-  font-family: var(--font-geist-sans),
-               Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", 
-               Roboto, "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", 
-               "Droid Sans", "Helvetica Neue", Arial, Helvetica, sans-serif,
-               "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji" !important;
-}
-
 
 @layer utilities {
   .text-balance {
