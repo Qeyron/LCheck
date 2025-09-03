@@ -3,14 +3,29 @@ import localFont from "next/font/local";
 import "./globals.css";
 
 const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
+  src: [{ path: "./fonts/GeistVF.woff", style: "normal" }],
   variable: "--font-geist-sans",
   weight: "100 900",
+  display: "swap",
+  fallback: [
+    "Inter",
+    "system-ui",
+    "Segoe UI",
+    "Roboto",
+    "Arial",
+    "Helvetica",
+    "Apple Color Emoji",
+    "Segoe UI Emoji",
+    "Noto Color Emoji"
+  ],
 });
+
 const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
+  src: [{ path: "./fonts/GeistMonoVF.woff", style: "normal" }],
   variable: "--font-geist-mono",
   weight: "100 900",
+  display: "swap",
+  fallback: ["ui-monospace", "SFMono-Regular", "Menlo", "Consolas", "monospace"],
 });
 
 export const metadata: Metadata = {
