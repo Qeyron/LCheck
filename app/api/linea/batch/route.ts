@@ -57,29 +57,31 @@ function decodeEligibility(resultHex: string) {
 type CallParams = { to: string; data: string; from?: string };
 
 async function rpcEthCall(params: CallParams): Promise<string> {
-  const body = { jsonrpc: "2.0", id: 1, method: "eth_call", params: [params, "latest"] };
+  const body = {
+    jsonrpc: "2.0",
+    id: 1,
+    method: "eth_call",
+    params: [params, "latest"],
+  };
+
   const res = await fetch(RPC_URL, {
     method: "POST",
-    headers: { "content-type": "application/json" },
+    headers: {
+      "content-type": "application/json",
+      "Cache-Control": "no-store", // опционально; POST и так не кэшируется
+    },
     body: JSON.stringify(body),
-    cache: "no-store",
-    signal: AbortSignal.timeout(15000),
+    signal: AbortSignal.timeout(15_000),
   });
 
-  const j = await res.json().catch(() => ({} as any));
-  if (!res.ok || j?.error) {
-    const code = j?.error?.code ?? res.status;
-    const msg = j?.error?.message || `RPC HTTP ${res.status}`;
-    const data: string | undefined = j?.error?.data;
-    const isRevert =
-      code === -32000 || /revert/i.test(String(msg)) || (typeof data === "string" && data.startsWith("0x"));
-    const err = new Error(isRevert ? "REVERT" : `${code}: ${msg}`);
-    (err as any).__isRevert = isRevert;
-    (err as any).__rpc = { code, msg, data };
-    throw err;
+  if (!res.ok) {
+    throw new Error(`RPC HTTP ${res.status} ${res.statusText}`);
   }
-  if (!j?.result) throw new Error("Empty result");
-  return j.result as string;
+  const json = await res.json();
+  if (json.error) {
+    throw new Error(`RPC error: ${json.error.message ?? JSON.stringify(json.error)}`);
+  }
+  return json.result as string;
 }
 
 async function tryMode(address: string, mode: "address" | "sender" | "bytes32") {
