@@ -1,7 +1,15 @@
 {
-    "name": "lineachecker",
-    "compatibility_date": "2024-09-23",
-    "compatibility_flags": ["nodejs_compat"],
-    "pages_build_output_dir": ".vercel/output/static"
+  "name": "lineachecker",
+  "compatibility_date": "2024-09-23",
+  "compatibility_flags": ["nodejs_compat"],
+  "pages_build_output_dir": ".vercel/output/static",
+
+  "vars": {
+    "LINEA_RPC_URL": "https://rpc.linea.build",
+    "ELIG_CONTRACT": "0x87baa1694381ae3ecae2660d97fe60404080eb64",
+    "ELIG_FUNC_SELECTOR": "0x7debb959",
+    "ELIG_ARG_MODE": "address",
+    "LINEA_CONCURRENCY": "5",
+    "NEXT_PUBLIC_USE_MOCK": "false"
   }
-  
+}
