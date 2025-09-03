@@ -6,9 +6,14 @@
     "dev": "next dev --turbo",
     "build": "next build",
     "start": "next start",
+
     "lint": "oxlint",
     "type-check": "tsc --noEmit",
-    "check-all": "npm run lint & npm run type-check & wait"
+    "check-all": "npm run lint & npm run type-check & wait",
+
+    "pages:build": "npx @cloudflare/next-on-pages",
+    "preview": "npm run pages:build && npx wrangler pages dev",
+    "deploy": "npm run pages:build && npx wrangler pages deploy"
   },
   "dependencies": {
     "@supabase/ssr": "^0.6.1",
