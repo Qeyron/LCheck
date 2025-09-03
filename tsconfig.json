@@ -1,0 +1,42 @@
+{
+  "compilerOptions": {
+    "target": "ES2022", // >= ES2020 нужно для BigInt
+    "lib": [
+      "ES2023",
+      "DOM",
+      "DOM.Iterable"
+    ], // актуальные типы + браузерные API
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "downlevelIteration": true, // чтобы не ругался на for..of/Set и т.п.
+    "allowJs": true,
+    "strict": true,
+    "noEmit": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "forceConsistentCasingInFileNames": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": [
+        "./*"
+      ]
+    },
+    "resolveJsonModule": true,
+    "isolatedModules": true
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
