@@ -40,9 +40,19 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# deps / build
 node_modules
+.pnpm
+.next
 dist
 build
-.next
-.DS_Store
+.vercel
+.turbo
+
+# locks (если используешь npm — оставь только package-lock.json)
+pnpm-lock.yaml
+yarn.lock
+
+# env
 .env
+.env.*
