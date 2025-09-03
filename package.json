@@ -32,19 +32,6 @@
     "supabase": "2.34.3",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
-  },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "supabase",
-      "unrs-resolver"
-    ],
-    "peerDependencyRules": {
-      "allowAny": [
-        "supabase"
-      ]
-    },
-    "patchedDependencies": {
-      "supabase@2.34.3": ".easycode-ai/supabase/v2.34.3/supabase@2.34.3.patch"
-    }
   }
+  
 }
