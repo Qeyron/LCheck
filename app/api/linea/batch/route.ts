@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { keccak_256 } from "js-sha3";
 
-export const runtime = "edge";
+export const runtime = 'edge';
 
 const RPC_URL = process.env.LINEA_RPC_URL || "";
 const CONTRACT = (process.env.ELIG_CONTRACT || "").toLowerCase();
